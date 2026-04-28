@@ -8,8 +8,7 @@
 
 ---
 
-## Learning Objectives<img width="572" height="406" alt="Screenshot 2026-04-28 at 4 55 20 pm" src="https://github.com/user-attachments/assets/70e83ab8-b8f0-46ba-ae00-9bb2383e9d35" />
-
+## Learning Objectives
 
 After completing this exercise you will be able to:
 
