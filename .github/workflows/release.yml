@@ -21,6 +21,9 @@ jobs:
       - name: Render SVG from PlantUML source
         run: plantuml -tsvg schema.puml
 
+      - name: Render PNG from PlantUML source
+        run: plantuml -tpng schema.puml
+        
       - name: Create GitHub Release and upload artifact
         env:
           GH_TOKEN: ${{ github.token }}
