@@ -10,7 +10,8 @@
 
 ---
 
-## Learning Objectives
+## Learning Objectives<img width="572" height="406" alt="Screenshot 2026-04-28 at 4 55 20 pm" src="https://github.com/user-attachments/assets/70e83ab8-b8f0-46ba-ae00-9bb2383e9d35" />
+
 
 After completing this exercise you will be able to:
 
@@ -295,7 +296,8 @@ Open `schema.svg` in a browser or SVG viewer.
 
 > **Screenshot 2:** Take a screenshot of `schema.svg` open in your browser,
 > showing all five entities and all four relationships, and insert it here.
->
+> <img width="1066" height="542" alt="Screenshot 2026-04-28 at 5 16 49 pm" src="https://github.com/user-attachments/assets/4a3011a9-8664-4306-ba3e-01ef647457f8" />
+
 > `[insert screenshot]`
 
 Once the diagram looks correct, tell Git to ignore the generated artifact.
@@ -397,7 +399,8 @@ git tag
 
 > **Screenshot 3:** Take a screenshot of `git log --oneline -5` showing your
 > commits in order, and insert it here.
->
+><img width="743" height="364" alt="Screenshot 2026-04-28 at 6 27 54 pm" src="https://github.com/user-attachments/assets/66cdff42-e496-4a2c-830d-996520360a50" />
+
 > `[insert screenshot]`
 
 > **Caveat:** Tags are not pushed automatically with `git push origin main`.
