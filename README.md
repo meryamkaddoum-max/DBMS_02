@@ -222,7 +222,7 @@ In der Chen-Notation wird eine N:M-Beziehung über ein separates Beziehungssymbo
 and observe the output filename. Why would this break the workflow?
 
 > *Your answer:*
-In der Chen-Notation wird eine N:M-Beziehung über ein separates Beziehungssymbol (Diamant) dargestellt, während in der Crow’s-Foot-Notation die Kardinalitäten direkt an der Verbindungslinie angezeigt werden.
+Mit @startuml Library wird die Ausgabedatei Library.svg statt schema.svg erzeugt, was den Workflow bricht, da dieser explizit schema.svg erwartet.
 > 
 **Question 2.3:** The `Author`–`Book` relationship is N:M. Does your PlantUML
 diagram require you to model the intermediate join table explicitly, or does
