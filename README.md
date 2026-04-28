@@ -1,4 +1,4 @@
-![DBMS_02 – ER Schema as Code](assets/header.svg)
+
 
 # DBMS_02 – ER Schema as Code: PlantUML & GitHub Releases
 
@@ -218,20 +218,22 @@ ellipses). PlantUML uses Crow's Foot notation. Describe one concrete difference
 in how an N:M relationship is represented in each notation.
 
 > *Your answer:*
-
+In der Chen-Notation wird eine N:M-Beziehung über ein separates Beziehungssymbol (Diamant) dargestellt, während in der Crow’s-Foot-Notation die Kardinalitäten direkt an der Verbindungslinie angezeigt werden.
+> 
 **Question 2.2:** What would happen if you wrote `@startuml Library` instead of
 `@startuml` at the top of `schema.puml`? Try it locally (`plantuml -tsvg schema.puml`)
 and observe the output filename. Why would this break the workflow?
 
 > *Your answer:*
-
+In der Chen-Notation wird eine N:M-Beziehung über ein separates Beziehungssymbol (Diamant) dargestellt, während in der Crow’s-Foot-Notation die Kardinalitäten direkt an der Verbindungslinie angezeigt werden.
+> 
 **Question 2.3:** The `Author`–`Book` relationship is N:M. Does your PlantUML
 diagram require you to model the intermediate join table explicitly, or does
 PlantUML abstract it away? At which stage of the design process would the join
 table appear?
 
 > *Your answer:*
-
+PlantUML abstrahiert die N:M-Beziehung und benötigt keine explizite Join-Tabelle. Diese entsteht erst im relationalen Datenbankdesign.
 ---
 
 ## Excursus: Docs as Code – Why text-based diagrams?
@@ -327,12 +329,13 @@ Name one shell command you could use to check the exit code of the last command
 and verify that the render succeeded, without opening the SVG file.
 
 > *Your answer:*
-
+echo $?
 **Question 3.2:** Delete `schema.svg` and run `plantuml -tsvg schema.puml` again.
 Then run `git status`. Is `schema.svg` shown as an untracked file? Explain why
 or why not.
 
 > *Your answer:*
+Nein, schema.svg wird nicht angezeigt, da es in .gitignore steht und somit von Git ignoriert wird.
 
 ---
 
@@ -413,12 +416,13 @@ git tag
 your fork on GitHub. Did any workflow run trigger? Explain why or why not.
 
 > *Your answer:*
-
+Nein, es wird kein Workflow ausgelöst, da dieser nur bei Tag-Pushes konfiguriert ist und nicht bei Pushes auf den main-Branch.
+> 
 **Question 4.2:** Run `git tag -v v1.0.0`. What information is shown that
 `git tag` alone does not display? What does the `-v` flag verify?
 
 > *Your answer:*
-
+git tag -v zeigt zusätzliche Informationen wie Autor, Datum und Nachricht und überprüft die Authentizität des Tags.
 ---
 
 ## 5 – GitHub Actions Workflow
@@ -561,13 +565,15 @@ if you replaced it with `on: push: branches: ['main']`? Would the release
 workflow still make sense? Why or why not?
 
 > *Your answer:*
-
+Der Workflow würde bei jedem Commit auf main ausgeführt werden, was für Releases ungeeignet ist, da Releases gezielt über Tags erfolgen sollen.
+> 
 **Question 5.2:** The step `apt-get install plantuml` takes roughly 20–30 seconds
 on every run. In a larger team with many releases per day, this adds up. Name
 one GitHub Actions mechanism that could eliminate this installation time on
 repeated runs.
 
 > *Your answer:*
+Durch Caching oder die Nutzung eines vorbereiteten Docker-Images kann die Installationszeit reduziert werden.
 
 ---
 
@@ -594,6 +600,7 @@ Open your fork on GitHub and navigate to the **Actions** tab.
 > showing all four steps with green checkmarks, and insert it here.
 >
 > `[insert screenshot]`
+<img width="702" height="603" alt="Screenshot 2026-04-28 at 7 26 48 pm" src="https://github.com/user-attachments/assets/74eca1be-390f-4913-9111-28aeb11b40cb" />
 
 Once the workflow has completed, navigate to **Releases** in the right sidebar.
 
@@ -606,6 +613,8 @@ Once the workflow has completed, navigate to **Releases** in the right sidebar.
 > insert it here.
 >
 > `[insert screenshot]`
+<img width="1366" height="948" alt="image" src="https://github.com/user-attachments/assets/6ff24e66-2930-4491-a18c-9e8c569ff971" />
+
 
 ### Questions for Task 6
 
@@ -615,13 +624,14 @@ Which takes longer, and by approximately what factor? What does this suggest
 about where optimisation effort should be directed?
 
 > *Your answer:*
-
+Die Installation dauert deutlich länger (ca. 10–20-mal länger), daher sollte die Optimierung auf diesen Schritt fokussiert werden.
 **Question 6.2:** Download `schema.svg` from the Release page and compare it
 to the `schema.svg` you rendered locally with `plantuml -tsvg schema.puml`.
 Are they identical? What does this tell you about the reproducibility of the
 build process?
 
 > *Your answer:*
+Ja, sie sind identisch. Das zeigt, dass der Build-Prozess reproduzierbar ist.
 
 ---
 
@@ -636,7 +646,8 @@ your schema. What would be different if you had stored the diagram as a
 lose?
 
 > *Your answer:*
-
+Bei binären Dateien sind keine Diffs möglich, wodurch detaillierte Änderungsverläufe verloren gehen.
+> 
 **Question B – Collaboration:**
 Imagine two people editing `schema.puml` simultaneously on separate branches –
 one adds a `Genre` entity, the other corrects a cardinality. When they merge,
@@ -644,6 +655,8 @@ Git can show a textual diff of the conflict. Would this be possible with a
 binary diagram file? What practical consequence does this have for a team?
 
 > *Your answer:*
+Nein, das ist mit binären Dateien nicht möglich, was die Zusammenarbeit und Konfliktlösung erschwert.
+
 
 **Question C – Tag vs. branch for releases:**
 You tagged a specific commit as `v1.0.0` rather than pushing to a branch called
@@ -651,7 +664,8 @@ You tagged a specific commit as `v1.0.0` rather than pushing to a branch called
 Under what circumstance would someone want to use a branch instead?
 
 > *Your answer:*
-
+Ein Tag ist unveränderlich und zeigt immer auf denselben Commit, während ein Branch sich weiterbewegen kann. Ein Branch ist für fortlaufende Entwicklung sinnvoll.
+> 
 **Question D – The value of CI for documentation:**
 Before this exercise, updating a diagram meant: edit the source, export an
 image, commit the image, hope the export matched the source. Describe in two
@@ -660,12 +674,15 @@ instead.
 
 > *Your answer:*
 
+CI eliminiert den manuellen Export und automatisiert die Generierung des Diagramms. Es garantiert, dass Bild und Quellcode immer übereinstimmen.
+> 
 > **Screenshot 6:** Take a screenshot of your terminal showing
 > `git log --oneline` with all commits from this exercise visible, then open
 > `schema.svg` from the Release in the same browser window alongside it.
 > Capture both in one screenshot and insert it here.
 >
 > `[insert screenshot]`
+<img width="2878" height="1536" alt="image" src="https://github.com/user-attachments/assets/c53ba97f-af80-42f3-b492-d31ec69ed972" />
 
 ---
 
@@ -714,6 +731,9 @@ instead.
    > corresponding GitHub Release page, and insert it here.
    >
    > `[insert screenshot]`
+<img width="1191" height="590" alt="Screenshot 2026-04-28 at 8 36 09 pm" src="https://github.com/user-attachments/assets/cdc02d88-1117-4a92-ae06-6c96f3cc2e6e" />
+<img width="943" height="451" alt="Screenshot 2026-04-28 at 8 36 32 pm" src="https://github.com/user-attachments/assets/044d1678-5aa3-49e6-8b5e-b78329a65781" />
+
 
 ---
 
