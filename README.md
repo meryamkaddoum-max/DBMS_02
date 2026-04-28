@@ -1,5 +1,3 @@
-
-
 # DBMS_02 – ER Schema as Code: PlantUML & GitHub Releases
 
 **Module:** Databases · THGA Bochum  
