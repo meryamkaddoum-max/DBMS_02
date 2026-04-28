@@ -327,6 +327,7 @@ and verify that the render succeeded, without opening the SVG file.
 
 > *Your answer:*
 echo $?
+
 **Question 3.2:** Delete `schema.svg` and run `plantuml -tsvg schema.puml` again.
 Then run `git status`. Is `schema.svg` shown as an untracked file? Explain why
 or why not.
