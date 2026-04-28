@@ -36,6 +36,7 @@ entity "Copy" as C {
   --
   ShelfLocation       : VARCHAR(30)
   Condition           : VARCHAR(20)
+
 }
 
 entity "Member" as M {
@@ -53,6 +54,10 @@ entity "Loan" as L {
   LoanDate            : DATE
   ReturnDate          : DATE
 }
+entity Genre {
+  GenreID : INTEGER <<PK>>
+  Name : VARCHAR(100)
+}
 
 ' ============================================================
 ' TODO: Add relationships here
@@ -60,6 +65,7 @@ entity "Loan" as L {
   Book ||--|{ Copy : "is available as"
   Member ||--o{ Loan : "places"
   Copy ||--o{ Loan : "is borrowed in"
+  Genre ||--o{ Book : "categorises"
 '
 ' Crow's Foot notation:
 '   ||   exactly one     (mandatory one)
